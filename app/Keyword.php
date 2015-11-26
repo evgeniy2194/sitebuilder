@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class Keyword extends Model
 {
+    use PresentableTrait;
+    protected $presenter = \Acme\Presenters\KeywordPresenter::class;
 
     /**
      * The database table used by the model.

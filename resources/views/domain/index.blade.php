@@ -9,17 +9,29 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>SL.</th><th>Name</th><th>Domaingroup Id</th><th>Actions</th>
+                    <th>Name</th>
+                    <th>Domain Group</th>
+                    <th>Actions</th>
                 </tr>
             </thead>                
             <tbody>
-            {{-- */$x=0;/* --}}
             @foreach($domains as $item)
-                {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
-                    <td><a href="{{ url('/domain', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->domaingroup_id }}</td>
-                    <td><a href="{{ url('/domain/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a> / {!! Form::open(['method'=>'delete','action'=>['DomainController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
+                    <td>
+                        {!! $item->present()->adminLink() !!}
+                    </td>
+                    <td>
+                        {!! $item->domaingroup->name !!}
+                    </td>
+                    <td>
+                        <a href="{!! $item->present()->editURL() !!}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a>
+                        /
+                        {!! Form::open(['method'=>'delete','action'=>['DomainController@destroy',$item->id], 'style' => 'display:inline']) !!}
+                            <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
             </tbody>

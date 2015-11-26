@@ -16,9 +16,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $domain->name }} </td>
-                    <td> {{ $domain->domaingroup->name }} </td>
-                    <td> {!! $domain->keywordgroup->name !!}</td>
+                    <td> <strong>{{ $domain->name }}</strong> </td>
+                    <td> {!! $domain->domaingroup->present()->adminLink() !!} </td>
+                    <td> {!! $domain->keywordgroup->present()->adminLink() !!}</td>
                 </tr>
             </tbody>    
         </table>

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class Keywordgroup extends Model
 {
+
+    use PresentableTrait;
+    protected $presenter = \Acme\Presenters\KeywordgroupPresenter::class;
 
     /**
      * The database table used by the model.

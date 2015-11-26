@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class Domain extends Model
 {
+    use PresentableTrait;
+    protected $presenter = \Acme\Presenters\DomainPresenter::class;
+
 
     /**
      * The database table used by the model.

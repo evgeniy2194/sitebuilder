@@ -4,23 +4,25 @@
 
 @section('content')
 
-    <h1>Domain Groups <a href="{{ url('/domaingroup/create') }}" class="btn btn-primary pull-right btn-sm">Add New Domain Group</a></h1>
+    <h1>Domain Groups <a href="{{ url('/domaingroup/create') }}" class="btn btn-primary pull-right btn-sm">Add Domain Group</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th class="text-center">Domains</th>
-                    <th>Actions</th>
+                    <th class="text-right">Actions</th>
                 </tr>
             </thead>                
             <tbody>
             @foreach($domaingroups as $item)
                 <tr>
-                    <td><a href="{{ url('/domaingroup', $item->id) }}">{{ $item->name }}</a></td>
-                    <td class="text-center">{!! number_format($item->domains()->count()) !!}</td>
                     <td>
-                        <a href="{{ url('/domaingroup/'.$item->id.'/edit') }}">
+                        {!! $item->present()->adminLink() !!}
+                    </td>
+                    <td class="text-center">{!! number_format($item->domains()->count()) !!}</td>
+                    <td class="text-right">
+                        <a href="{!! $item->present()->editURL() !!}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a>
                         /

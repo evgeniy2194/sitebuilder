@@ -9,7 +9,7 @@
             <h1>Domain Group</h1>
         </div>
         <div class="col-md-3 text-right" style="padding-top: 25px;">
-            <a href="{{ url('/domaingroup/'.$domaingroup->id.'/edit') }}"><button type="submit" class="btn btn-warning">Edit</button></a>
+            <a href="{!! $domaingroup->present()->editURL() !!}"><button type="submit" class="btn btn-warning">Edit</button></a>
         </div>
     </div>
 
@@ -41,10 +41,10 @@
             <tbody>
             @foreach($domaingroup->domains as $item)
                 <tr>
-                    <td><a href="{{ url('/domain', $item->id) }}">{{ $item->name }}</a></td>
-                    <td>{!! $item->keywordgroup->name !!}</td>
+                    <td>{!! $item->present()->adminLink() !!}</td>
+                    <td>{!! $item->keywordgroup->present()->adminLink() !!}</td>
                     <td class="text-right">
-                        <a href="{{ url('/domain/'.$item->id.'/edit') }}">
+                        <a href="{!! $item->present()->editURL() !!}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button></a>
                         /
                         {!! Form::open(['method'=>'delete','action'=>['DomainController@destroy',$item->id], 'style' => 'display:inline']) !!}

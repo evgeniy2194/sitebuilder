@@ -17,12 +17,15 @@
             <tbody>
             @foreach($keywordgroups as $item)
                 <tr>
-                    <td><a href="{{ url('/keywordgroup', $item->id) }}">{{ $item->name }}</a></td>
+                    <td>{!! $item->present()->adminLink() !!}</td>
                     <td class="text-center">{!! $item->keywords()->count() !!}</td>
                     <td class="text-right">
-                        <a href="{{ url('/keywordgroup/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a>
+                        <a href="{!! $item->present()->editURL() !!}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a>
                         /
-                        {!! Form::open(['method'=>'delete','action'=>['KeywordgroupController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
+                        {!! Form::open(['method'=>'delete','action'=>['KeywordgroupController@destroy',$item->id], 'style' => 'display:inline']) !!}
+                            <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
             </tbody>

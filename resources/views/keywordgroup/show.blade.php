@@ -9,7 +9,7 @@
             <h1>Keyword Group</h1>
         </div>
         <div class="col-md-3 text-right" style="padding-top: 25px;">
-            <a href="{{ url('/keywordgroup/'.$keywordgroup->id.'/edit') }}"><button type="submit" class="btn btn-warning">Edit</button></a>
+            <a href="{!! $keywordgroup->present()->editURL() !!}"><button type="submit" class="btn btn-warning">Edit</button></a>
         </div>
     </div>
 
@@ -40,9 +40,9 @@
             <tbody>
             @foreach($keywordgroup->keywords as $item)
                 <tr>
-                    <td><a href="{{ url('/keyword', $item->id) }}">{{ $item->name }}</a></td>
+                    <td>{!! $item->present()->adminLink() !!}</td>
                     <td class="text-right">
-                        <a href="{{ url('/keyword/'.$item->id.'/edit') }}">
+                        <a href="{!! $item->present()->editURL() !!}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button></a>
                         /
                         {!! Form::open(['method'=>'delete','action'=>['KeywordController@destroy',$item->id], 'style' => 'display:inline']) !!}

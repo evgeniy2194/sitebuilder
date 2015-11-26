@@ -10,11 +10,11 @@
     {!! Form::model($domaingroup, ['method' => 'PATCH', 'action' => ['DomaingroupController@update', $domaingroup->id], 'class' => 'form-horizontal']) !!}
 
     <div class="form-group">
-                        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
     
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">

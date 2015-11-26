@@ -9,12 +9,14 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th> <th>Name</th><th>Keywordgroup Id</th>
+                    <th>Name</th>
+                    <th>Keyword Group</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $keyword->id }}</td> <td> {{ $keyword->name }} </td><td> {{ $keyword->keywordgroup_id }} </td>
+                    <td> {{ $keyword->name }} </td>
+                    <td> {!! $keyword->keywordgroup->present()->adminLink() !!} </td>
                 </tr>
             </tbody>    
         </table>
