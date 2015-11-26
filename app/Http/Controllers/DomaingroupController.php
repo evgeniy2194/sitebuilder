@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Keywordgroup;
+use App\Domaingroup;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class KeywordgroupController extends Controller
+class DomaingroupController extends Controller
 {
 
 	/**
@@ -19,8 +19,8 @@ class KeywordgroupController extends Controller
 	 */
 	public function index()
 	{
-		$keywordgroups = Keywordgroup::latest()->get();
-		return view('keywordgroup.index', compact('keywordgroups'));
+		$domaingroups = Domaingroup::latest()->get();
+		return view('domaingroup.index', compact('domaingroups'));
 	}
 
 	/**
@@ -30,7 +30,7 @@ class KeywordgroupController extends Controller
 	 */
 	public function create()
 	{
-		return view('keywordgroup.create');
+		return view('domaingroup.create');
 	}
 
 	/**
@@ -40,9 +40,9 @@ class KeywordgroupController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, ['name' => 'required|unique:keywordgroups|string']);
-		Keywordgroup::create($request->all());
-		return redirect('keywordgroup');
+		$this->validate($request, ['name' => 'required|unique:domaingroups|string']);
+		Domaingroup::create($request->all());
+		return redirect('domaingroup');
 	}
 
 	/**
@@ -53,8 +53,8 @@ class KeywordgroupController extends Controller
 	 */
 	public function show($id)
 	{
-		$keywordgroup = Keywordgroup::findOrFail($id);
-		return view('keywordgroup.show', compact('keywordgroup'));
+		$domaingroup = Domaingroup::findOrFail($id);
+		return view('domaingroup.show', compact('domaingroup'));
 	}
 
 	/**
@@ -65,8 +65,8 @@ class KeywordgroupController extends Controller
 	 */
 	public function edit($id)
 	{
-		$keywordgroup = Keywordgroup::findOrFail($id);
-		return view('keywordgroup.edit', compact('keywordgroup'));
+		$domaingroup = Domaingroup::findOrFail($id);
+		return view('domaingroup.edit', compact('domaingroup'));
 	}
 
 	/**
@@ -78,9 +78,9 @@ class KeywordgroupController extends Controller
 	public function update($id, Request $request)
 	{
 		$this->validate($request, ['name' => 'required']);
-		$keywordgroup = Keywordgroup::findOrFail($id);
-		$keywordgroup->update($request->all());
-		return redirect('keywordgroup');
+		$domaingroup = Domaingroup::findOrFail($id);
+		$domaingroup->update($request->all());
+		return redirect('domaingroup');
 	}
 
 	/**
@@ -91,8 +91,8 @@ class KeywordgroupController extends Controller
 	 */
 	public function destroy($id)
 	{
-		Keywordgroup::destroy($id);
-		return redirect('keywordgroup');
+		Domaingroup::destroy($id);
+		return redirect('domaingroup');
 	}
 
 }
