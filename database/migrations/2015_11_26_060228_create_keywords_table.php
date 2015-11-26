@@ -14,10 +14,13 @@ class CreateKeywordsTable extends Migration
     {
         
             Schema::create('keywords', function(Blueprint $table) {
-                $table->increments('id');
+                $table->bigIncrements('id');
                 $table->string('name');
-$table->integer('keywordgroup_id');
-
+                $table->integer('keywordgroup_id')->unsigned();
+                $table->foreign('keywordgroup_id')
+                    ->references('id')
+                    ->on('keywordgroups')
+                    ->onDelete('cascade');
                 $table->timestamps();
             });
             
