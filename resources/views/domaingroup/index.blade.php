@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th class="text-center">Domains</th>
                     <th>Actions</th>
                 </tr>
             </thead>                
@@ -17,6 +18,7 @@
             @foreach($domaingroups as $item)
                 <tr>
                     <td><a href="{{ url('/domaingroup', $item->id) }}">{{ $item->name }}</a></td>
+                    <td class="text-center">{!! number_format($item->domains()->count()) !!}</td>
                     <td>
                         <a href="{{ url('/domaingroup/'.$item->id.'/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

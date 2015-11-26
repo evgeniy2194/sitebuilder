@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Domaingroup extends Model
+class Domain extends Model
 {
 
     /**
@@ -12,18 +12,18 @@ class Domaingroup extends Model
      *
      * @var string
      */
-    protected $table = 'domaingroups';
+    protected $table = 'domains';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'domaingroup_id'];
 
-    public function domains()
+    public function domaingroup()
     {
-        return $this->hasMany(Domain::class);
+        return $this->belongsTo(DomainGroup::class);
     }
 
 }

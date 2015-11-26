@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
-@section('title') New Domain Group @endsection
+@section('title') Add Domains @endsection
 
 @section('content')
 
-    <h1>Create New Domaingroup</h1>
+    <h1>Add Domains</h1>
     <hr/>
 
-    {!! Form::open(['url' => 'domaingroup', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => 'domain', 'class' => 'form-horizontal']) !!}
     
     <div class="form-group">
-        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label('domains', 'Domain: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Form::textarea('domains', null, ['class' => 'form-control']) !!}
+            <p class="help-block">One domain per line</p>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
+            {!! Form::hidden('domaingroup_id', app('request')->input('domaingroup_id')) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>    
     </div>

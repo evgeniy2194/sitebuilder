@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
-@section('title') Edit Domain Group @endsection
+@section('title') Edit Domain @endsection
 
 @section('content')
 
-    <h1>Edit Domaingroup</h1>
+    <h1>Edit Domain</h1>
     <hr/>
 
-    {!! Form::model($domaingroup, ['method' => 'PATCH', 'action' => ['DomaingroupController@update', $domaingroup->id], 'class' => 'form-horizontal']) !!}
+    {!! Form::model($domain, ['method' => 'PATCH', 'action' => ['DomainController@update', $domain->id], 'class' => 'form-horizontal']) !!}
 
     <div class="form-group">
                         {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div><div class="form-group">
+                        {!! Form::label('domaingroup_id', 'Domaingroup Id: ', ['class' => 'col-sm-3 control-label']) !!}
+                        <div class="col-sm-6">
+                            {!! Form::number('domaingroup_id', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
     

@@ -28,4 +28,31 @@
         </table>
     </div>
 
+    <h1>Domains <a href="{{ url('/domain/create'.'?domaingroup_id='.$domaingroup->id) }}" class="btn btn-primary pull-right btn-sm">Add Domains</a></h1>
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($domaingroup->domains as $item)
+                <tr>
+                    <td><a href="{{ url('/domain', $item->id) }}">{{ $item->name }}</a></td>
+                    <td class="text-right">
+                        <a href="{{ url('/domain/'.$item->id.'/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button></a>
+                        /
+                        {!! Form::open(['method'=>'delete','action'=>['DomainController@destroy',$item->id], 'style' => 'display:inline']) !!}
+                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
 @endsection

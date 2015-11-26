@@ -43,7 +43,6 @@ class KeywordController extends Controller
 	 */
 	public function store(Request $request)
 	{
-        //dd($request->all());
         $keywords = $request->get('keywords');
 
         // Break down keyword string into an array

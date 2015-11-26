@@ -28,7 +28,7 @@
         </table>
     </div>
 
-    <h1>Keywords <a href="{{ url('/keyword/create'.'?keywordgroup_id='.$keywordgroup->id) }}" class="btn btn-primary pull-right btn-sm">Add New Keyword</a></h1>
+    <h1>Keywords <a href="{{ url('/keyword/create'.'?keywordgroup_id='.$keywordgroup->id) }}" class="btn btn-primary pull-right btn-sm">Add Keywords</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
