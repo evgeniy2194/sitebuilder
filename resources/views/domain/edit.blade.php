@@ -2,6 +2,23 @@
 
 @section('title') Edit Domain @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/domain">Domains</a>
+        </li>
+        <li>
+            {!! $domain->present()->adminURL() !!}
+        </li>
+        <li class="active">Edit Domain</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Edit Domain</h1>

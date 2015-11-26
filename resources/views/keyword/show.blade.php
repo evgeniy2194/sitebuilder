@@ -2,6 +2,23 @@
 
 @section('title') {!! $keyword->name !!} @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/keywordgroup">Keyword Groups</a>
+        </li>
+        <li>
+            {!! $keyword->keywordgroup->present()->adminLink() !!}
+        </li>
+        <li class="active">Keyword: {!! $keyword->name !!}</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Keyword</h1>

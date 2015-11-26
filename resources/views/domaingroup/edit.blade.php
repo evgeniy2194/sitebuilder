@@ -2,9 +2,26 @@
 
 @section('title') Edit Domain Group @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/domaingroup">Domain Group</a>
+        </li>
+        <li>
+            {!! $domaingroup->present()->adminURL() !!}
+        </li>
+        <li class="active">Edit Domain Group</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
-    <h1>Edit Domaingroup</h1>
+    <h1>Edit Domain Group</h1>
     <hr/>
 
     {!! Form::model($domaingroup, ['method' => 'PATCH', 'action' => ['DomaingroupController@update', $domaingroup->id], 'class' => 'form-horizontal']) !!}

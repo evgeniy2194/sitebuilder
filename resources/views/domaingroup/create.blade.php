@@ -2,9 +2,23 @@
 
 @section('title') New Domain Group @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/domaingroup">Domain Groups</a>
+        </li>
+        <li class="active">Add Domain Group</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
-    <h1>Create New Domaingroup</h1>
+    <h1>Create New Domain Group</h1>
     <hr/>
 
     {!! Form::open(['url' => 'domaingroup', 'class' => 'form-horizontal']) !!}

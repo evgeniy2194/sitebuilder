@@ -2,6 +2,20 @@
 
 @section('title') Add Keywords @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/keyword">Keywords</a>
+        </li>
+        <li class="active">Add Keywords</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Add Keywords</h1>

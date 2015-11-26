@@ -2,6 +2,23 @@
 
 @section('title') {!! $domain->name !!} @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+    	<li>
+    		<a href="/">Home</a>
+    	</li>
+        <li>
+            <a href="/domaingroup">Domain Groups</a>
+        </li>
+        <li>
+            {!! $domain->domaingroup->present()->adminLink() !!}
+        </li>
+    	<li class="active">Domain: {!! $domain->name !!}</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Domain</h1>

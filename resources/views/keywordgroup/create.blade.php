@@ -2,6 +2,20 @@
 
 @section('title') Create Keyword Group @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/keywordgroup">Keyword Groups</a>
+        </li>
+        <li class="active">Add Keyword Groups</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Create New Keyword Group</h1>

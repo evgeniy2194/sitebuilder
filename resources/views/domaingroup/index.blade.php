@@ -2,6 +2,17 @@
 
 @section('title') Domain Groups @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li class="active">Domain Groups</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Domain Groups <a href="{{ url('/domaingroup/create') }}" class="btn btn-primary pull-right btn-sm">Add Domain Group</a></h1>

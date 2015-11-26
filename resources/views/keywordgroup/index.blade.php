@@ -2,6 +2,17 @@
 
 @section('title') Keyword Groups @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li class="active">Keyword Groups</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Keyword Groups <a href="{{ url('/keywordgroup/create') }}" class="btn btn-primary pull-right btn-sm">Add New Keyword Group</a></h1>

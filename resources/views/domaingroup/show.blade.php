@@ -2,6 +2,20 @@
 
 @section('title') {!! $domaingroup->name !!} @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/domaingroup">Domain Groups</a>
+        </li>
+        <li class="active">{!! $domaingroup->name !!}</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <div class="row">

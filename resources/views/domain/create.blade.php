@@ -2,6 +2,20 @@
 
 @section('title') Add Domains @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/domain">Domains</a>
+        </li>
+        <li class="active">Add Domains</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Add Domains</h1>

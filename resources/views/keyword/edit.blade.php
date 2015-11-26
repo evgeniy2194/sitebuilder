@@ -2,6 +2,23 @@
 
 @section('title') Edit Keyword @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/keyword">Keywords</a>
+        </li>
+        <li>
+            {!! $keyword->present()->adminURL() !!}
+        </li>
+        <li class="active">Edit Keyword</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Edit Keyword</h1>

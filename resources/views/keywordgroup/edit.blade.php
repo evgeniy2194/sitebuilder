@@ -2,6 +2,23 @@
 
 @section('title') Edit Keyword Group @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/keywordgroup">Keyword Group</a>
+        </li>
+        <li>
+            {!! $keywordgroup->present()->adminLink() !!}
+        </li>
+        <li class="active">Edit Keyword Group</li>
+    </ol>
+
+@endsection
+
 @section('content')
 
     <h1>Edit Keyword Group</h1>
