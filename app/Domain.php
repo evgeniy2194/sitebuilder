@@ -27,7 +27,7 @@ class Domain extends Model
 
     public function domaingroup()
     {
-        return $this->belongsTo(DomainGroup::class);
+        return $this->belongsTo(Domaingroup::class);
     }
 
     public function keywordgroup()
