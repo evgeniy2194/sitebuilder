@@ -16,5 +16,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/', function () {
         return view('dashboard');
     });
-
+    
+    Route::resource('keywordgroup', 'KeywordgroupController');
 });
