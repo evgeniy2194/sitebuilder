@@ -20,6 +20,14 @@
                                     <td><strong>Keywords</strong></td>
                                     <td class="text-right">{!! number_format(\App\Keyword::count()) !!}</td>
                                 </tr>
+                                <tr>
+                                    <td><strong>Domain Groups</strong></td>
+                                    <td class="text-right">{!! number_format(\App\Domaingroup::count()) !!}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Domains</strong></td>
+                                    <td class="text-right">{!! number_format(\App\Domain::count()) !!}</td>
+                                </tr>
             				</tbody>
             			</table>
             	  </div>
