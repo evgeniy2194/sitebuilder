@@ -10,9 +10,10 @@
     {!! Form::open(['url' => 'keyword', 'class' => 'form-horizontal']) !!}
     
     <div class="form-group">
-        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label('keywords', 'Keywords: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Form::textarea('keywords', null, ['class' => 'form-control']) !!}
+            <p class="help-block">One keyword per line</p>
         </div>
     </div>
 

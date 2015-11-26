@@ -9,6 +9,8 @@ use App\Keyword;
 use App\Keywordgroup;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
+use Laracasts\Flash\Flash;
 
 class KeywordController extends Controller
 {
@@ -41,17 +43,51 @@ class KeywordController extends Controller
 	 */
 	public function store(Request $request)
 	{
-        // This name validation rule will confirm that a keyword->name is unique to the supplied keywordgroup
-		$this->validate($request, [
-            'keywordgroup_id'   => 'integer|required',
-            'name'              => 'required|string|max:255|unique:keywords,name,NULL,id,keywordgroup_id,'.$request->get('keywordgroup_id')
-        ]);
+        //dd($request->all());
+        $keywords = $request->get('keywords');
 
-        $keywordgroup_id    = $request->get('keywordgroup_id');
-        $keywordgroup       = Keywordgroup::find($keywordgroup_id);
-        $keywordgroup->keywords()->create($request->all());
+        // Break down keyword string into an array
+        if(mb_stristr($keywords, "\r\n"))
+        {
+            $keywords = explode("\r\n", $keywords);
+        }
+        else
+        {
+            $keywords = [$keywords];
+        }
 
-		//Keyword::create($request->all());
+        // Get rid of empties
+        foreach($keywords as $key => $keyword)
+        {
+            if($keyword == '')
+                unset($keywords[$key]);
+        }
+
+        if( ! $request->has('keywordgroup_id'))
+        {
+            Flash::error('No keyword group supplied');
+            return back();
+        }
+
+        $keywordgroup_id            = $request->get('keywordgroup_id');
+        $keywordgroup               = Keywordgroup::find($keywordgroup_id);
+        $data['keywordgroup_id']    = $keywordgroup_id;
+        foreach($keywords as $kw)
+        {
+            $data['name'] = $kw;
+            // This name validation rule will confirm that a keyword->name is unique to the supplied keywordgroup
+
+            $validator = Validator::make($data, [
+                'keywordgroup_id'   => 'integer|required',
+                'name'              => 'required|string|max:255|unique:keywords,name,NULL,id,keywordgroup_id,'.$keywordgroup_id
+            ]);
+
+            if($validator->passes())
+            {
+                $keywordgroup->keywords()->create($data);
+            }
+        }
+
         return redirect('/keywordgroup/'.$keywordgroup_id);
 	}
 
