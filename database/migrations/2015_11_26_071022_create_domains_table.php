@@ -21,6 +21,11 @@ class CreateDomainsTable extends Migration
                 ->references('id')
                 ->on('domaingroups')
                 ->onDelete('cascade');
+            $table->integer('keywordgroup_id')->unsigned();
+            $table->foreign('keywordgroup_id')
+                ->references('id')
+                ->on('keywordgroups')
+                ->onDelete('cascade');
             $table->timestamps();
         });
             

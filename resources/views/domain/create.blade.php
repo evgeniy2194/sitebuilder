@@ -18,6 +18,13 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('keywordgroup_id', 'Keyword Grouip: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::select('keywordgroup_id',\App\Keywordgroup::lists('name', 'id'), null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::hidden('domaingroup_id', app('request')->input('domaingroup_id')) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}

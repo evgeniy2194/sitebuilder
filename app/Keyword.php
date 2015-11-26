@@ -23,7 +23,7 @@ class Keyword extends Model
 
     public function keywordgroup()
     {
-        return $this->belongsTo('\App\Keywordgroup');
+        return $this->belongsTo(Keywordgroup::class);
     }
 
 }

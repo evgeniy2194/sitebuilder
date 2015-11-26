@@ -34,6 +34,7 @@
             <thead>
             <tr>
                 <th>Name</th>
+                <th>Keyword Group</th>
                 <th class="text-right">Actions</th>
             </tr>
             </thead>
@@ -41,6 +42,7 @@
             @foreach($domaingroup->domains as $item)
                 <tr>
                     <td><a href="{{ url('/domain', $item->id) }}">{{ $item->name }}</a></td>
+                    <td>{!! $item->keywordgroup->name !!}</td>
                     <td class="text-right">
                         <a href="{{ url('/domain/'.$item->id.'/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button></a>

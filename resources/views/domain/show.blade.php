@@ -10,12 +10,15 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Domaingroup Id</th>
+                    <th>Domain Group</th>
+                    <th>Keyword Group</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $domain->name }} </td><td> {{ $domain->domaingroup_id }} </td>
+                    <td> {{ $domain->name }} </td>
+                    <td> {{ $domain->domaingroup->name }} </td>
+                    <td> {!! $domain->keywordgroup->name !!}</td>
                 </tr>
             </tbody>    
         </table>

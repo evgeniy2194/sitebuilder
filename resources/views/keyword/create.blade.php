@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title') Create Keyword @endsection
+@section('title') Add Keywords @endsection
 
 @section('content')
 
-    <h1>Create New Keyword</h1>
+    <h1>Add Keywords</h1>
     <hr/>
 
     {!! Form::open(['url' => 'keyword', 'class' => 'form-horizontal']) !!}

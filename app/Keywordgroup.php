@@ -23,7 +23,12 @@ class Keywordgroup extends Model
 
     public function keywords()
     {
-        return $this->hasMany('\App\Keyword');
+        return $this->hasMany(Keyword::class);
+    }
+
+    public function domains()
+    {
+        return $this->hasMany(Domain::class);
     }
 
 }

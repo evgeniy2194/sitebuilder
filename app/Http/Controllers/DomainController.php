@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Domain;
+use App\Keywordgroup;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Domaingroup;
@@ -68,16 +69,25 @@ class DomainController extends Controller
             return back();
         }
 
+        if( ! $request->has('keywordgroup_id'))
+        {
+            Flash::error('No keyword group supplied');
+            return back();
+        }
+
         $domaingroup_id            = $request->get('domaingroup_id');
+        $keywordgroup_id           = $request->get('keywordgroup_id');
         $domaingroup               = Domaingroup::find($domaingroup_id);
+
         $data['domaingroup_id']    = $domaingroup_id;
+        $data['keywordgroup_id']   = $keywordgroup_id;
         foreach($domains as $domain)
         {
             $data['name'] = $domain;
-            // This name validation rule will confirm that a keyword->name is unique to the supplied keywordgroup
-
+            // This name validation rule will confirm that a domain->name is unique to the supplied domain group
             $validator = Validator::make($data, [
-                'domaingroup_id'   => 'integer|required',
+                'domaingroup_id'    => 'integer|required',
+                'keywordgroup_id'   => 'integer|required',
                 'name'              => 'required|string|max:255|unique:domains,name,NULL,id,domaingroup_id,'.$domaingroup_id
             ]);
 

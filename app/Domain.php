@@ -19,11 +19,16 @@ class Domain extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'domaingroup_id'];
+    protected $fillable = ['name', 'domaingroup_id', 'keywordgroup_id'];
 
     public function domaingroup()
     {
         return $this->belongsTo(DomainGroup::class);
+    }
+
+    public function keywordgroup()
+    {
+        return $this->belongsTo(Keywordgroup::class);
     }
 
 }
