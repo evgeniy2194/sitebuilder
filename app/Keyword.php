@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keywordgroup extends Model
+class Keyword extends Model
 {
 
     /**
@@ -12,18 +12,18 @@ class Keywordgroup extends Model
      *
      * @var string
      */
-    protected $table = 'keywordgroups';
+    protected $table = 'keywords';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'keywordgroup_id'];
 
-    public function keywords()
+    public function keywordgroup()
     {
-        return $this->hasMany('\App\Keyword');
+        return $this->belongsTo('\App\Keywordgroup');
     }
 
 }
