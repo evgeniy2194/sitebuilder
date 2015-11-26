@@ -13,16 +13,16 @@ class CreateKeywordsTable extends Migration
     public function up()
     {
         
-            Schema::create('keywords', function(Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('name');
-                $table->integer('keywordgroup_id')->unsigned();
-                $table->foreign('keywordgroup_id')
-                    ->references('id')
-                    ->on('keywordgroups')
-                    ->onDelete('cascade');
-                $table->timestamps();
-            });
+        Schema::create('keywords', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('keywordgroup_id')->unsigned();
+            $table->foreign('keywordgroup_id')
+                ->references('id')
+                ->on('keywordgroups')
+                ->onDelete('cascade');
+            $table->timestamps();
+        });
             
     }
 
