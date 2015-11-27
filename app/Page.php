@@ -6,6 +6,26 @@ use App\Exceptions\DomainNotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
+/**
+ * App\Page
+ *
+ * @property integer $id
+ * @property string $name
+ * @property mixed $body
+ * @property integer $keyword_id
+ * @property integer $domain_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read Domain $domain
+ * @property-read Keyword $keyword
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereBody($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereKeywordId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereDomainId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereUpdatedAt($value)
+ */
 class Page extends Model
 {
 

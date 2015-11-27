@@ -5,6 +5,25 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
+/**
+ * App\Domain
+ *
+ * @property integer $id
+ * @property string $name
+ * @property integer $domaingroup_id
+ * @property integer $keywordgroup_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read Domaingroup $domaingroup
+ * @property-read Keywordgroup $keywordgroup
+ * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $pages
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomaingroupId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereKeywordgroupId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUpdatedAt($value)
+ */
 class Domain extends Model
 {
     use PresentableTrait;
