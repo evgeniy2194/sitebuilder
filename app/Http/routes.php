@@ -21,6 +21,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('keyword',          'KeywordController');
     Route::resource('domaingroup',      'DomaingroupController');
     Route::resource('domain',           'DomainController');
+    Route::resource('page',             'PageController');
 
 });
-

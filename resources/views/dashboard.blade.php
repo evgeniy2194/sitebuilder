@@ -2,6 +2,14 @@
 
 @section('title') Dashboard @endsection
 
+@section('breadcrumbs')
+
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+
+@endsection
+
 @section('content')
 	<div class="row">
 		<div class="col-md-4">
@@ -27,6 +35,10 @@
                                 <tr>
                                     <td><strong>Domains</strong></td>
                                     <td class="text-right">{!! number_format(\App\Domain::count()) !!}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pages</strong></td>
+                                    <td class="text-right">{!! number_format(\App\Page::count()) !!}</td>
                                 </tr>
             				</tbody>
             			</table>
