@@ -18,6 +18,11 @@ class PagePresenter extends Presenter {
         return $this->url_path.'/'.$this->id.'/edit';
     }
 
+    public function webhookURL()
+    {
+        return \Config::get('app.url').'/webhooks/content/page/'.$this->id;
+    }
+
     public function adminLink($anchor = false)
     {
         if( ! $anchor)
