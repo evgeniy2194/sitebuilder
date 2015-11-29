@@ -17,10 +17,11 @@ Route::group(['middleware' => 'auth'], function() {
         return view('dashboard');
     });
     
-    Route::resource('keywordgroup',     'KeywordgroupController');
-    Route::resource('keyword',          'KeywordController');
-    Route::resource('domaingroup',      'DomaingroupController');
-    Route::resource('domain',           'DomainController');
-    Route::resource('page',             'PageController');
-
+    Route::resource('keywordgroup',             'KeywordgroupController');
+    Route::resource('keyword',                  'KeywordController');
+    Route::resource('domaingroup',              'DomaingroupController');
+    Route::resource('domain',                   'DomainController');
+    Route::resource('page',                     'PageController');
 });
+
+Route::post('webhooks/content/page/{id}',   'WebhooksController@receiveContent');

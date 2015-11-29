@@ -28,6 +28,7 @@ class CreatePagesTable extends Migration
                 ->references('id')
                 ->on('domains')
                 ->onDelete('cascade');
+            $table->boolean('content_requested')->default(0)->index();
             $table->timestamps();
         });
             

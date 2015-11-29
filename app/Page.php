@@ -4,7 +4,9 @@ namespace App;
 
 use App\Exceptions\DomainNotFoundException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Laracasts\Presenter\PresentableTrait;
+use Psy\Util\Str;
 
 /**
  * App\Page
@@ -54,6 +56,55 @@ class Page extends Model
     public function keyword()
     {
         return $this->belongsTo(Keyword::class);
+    }
+
+    public function getBodyAttribute($value)
+    {
+        return gzinflate($value);
+    }
+
+    public function setBodyAttribute($value)
+    {
+        $this->attributes['body'] = gzdeflate($value, 9);
+    }
+
+    // Send request to the ghetto content API
+    public function requestContent()
+    {
+        $base_url   = getenv('CONTENT_API_BASE_URL');
+        $endpoint   = 'search';
+        $parameters = '?query='.urlencode($this->keyword->name).'&webhook_url='.urlencode($this->present()->webhookURL());
+        $request_url= $base_url.$endpoint.$parameters;
+
+        $client     = new \GuzzleHttp\Client();
+        $client->get($request_url);
+
+        $this->content_requested = 1;
+        $this->save();
+    }
+
+    // Receive content from webhook
+    public function receiveContent($data)
+    {
+        /*
+         * Format that the payload is built with
+         *
+        $output = json_encode([
+            'keyword'       => $this->searchquery->name,
+            'content'       => $text_output,
+            'word_count'    => $resulting_word_count,
+            'images'        => $images_output,
+            'videos'        => $videos_output
+        ]);
+        */
+
+        if(isset($data['content']))
+        {
+            $this->name = $this->keyword->name;
+            $this->slug = str_slug($this->name);
+            $this->body = $data['content'];
+            $this->save();
+        }
     }
 
     public static function createPages($domain_id, $page_count)
