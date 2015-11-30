@@ -49,6 +49,7 @@
             <tr>
                 <th>Name</th>
                 <th>Keyword Group</th>
+                <th class="text-center">Pages</th>
                 <th class="text-right">Actions</th>
             </tr>
             </thead>
@@ -57,6 +58,7 @@
                 <tr>
                     <td>{!! $item->present()->adminLink() !!}</td>
                     <td>{!! $item->keywordgroup->present()->adminLink() !!}</td>
+                    <td class="text-center">{!! $item->pages()->count() !!}</td>
                     <td class="text-right">
                         <a href="{!! $item->present()->editURL() !!}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button></a>

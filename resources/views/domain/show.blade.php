@@ -21,7 +21,7 @@
 
 @section('content')
 
-    <h1>Domain</h1>
+    <h1>Domain <a href="{{ url('http://'.$domain->name) }}" target="_blank" class="btn btn-primary pull-right btn-sm">View Site</a></h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -29,6 +29,7 @@
                     <th>Name</th>
                     <th>Domain Group</th>
                     <th>Keyword Group</th>
+                    <th class="text-center">Pages</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,29 +37,32 @@
                     <td> <strong>{{ $domain->name }}</strong> </td>
                     <td> {!! $domain->domaingroup->present()->adminLink() !!} </td>
                     <td> {!! $domain->keywordgroup->present()->adminLink() !!}</td>
+                    <td class="text-center">{!! $domain->pages()->count() !!}</td>
                 </tr>
             </tbody>    
         </table>
     </div>
 
-    <h1>Pages <a href="{{ url('/page/create'.'?domain_id='.$domain->id) }}" class="btn btn-primary pull-right btn-sm">Add Pages</a></h1>
+    <h3>Pages <a href="{{ url('/page/create'.'?domain_id='.$domain->id) }}" class="btn btn-primary pull-right btn-sm">Add Pages</a></h3>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Keyword</th>
-                <th>Domain</th>
                 <th class="text-right">Actions</th>
             </tr>
             </thead>
             <tbody>
             @foreach($domain->pages as $item)
-                <tr>
+                <tr class="@if($item->content_delivered === 0) warning @endif">
                     <td>{!! link_to($item->present()->adminURL(), $item->present()->pageTitle()) !!}</td>
                     <td>{!! $item->keyword->present()->adminLink() !!}</td>
-                    <td>{{ $item->domain->name }}</td>
                     <td class="text-right">
+                        <a href="http://{!! $domain->name.'/'.$item->present()->url() !!}" class="btn btn-primary btn-xs" target="_blank">
+                            View Page
+                        </a>
+                        /
                         <a href="{!! $item->present()->editURL() !!}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a>
@@ -71,6 +75,7 @@
             @endforeach
             </tbody>
         </table>
+        <p class="alert alert-warning"><strong>(Pending)</strong> Indicates pages waiting for content</p>
     </div>
 
 @endsection

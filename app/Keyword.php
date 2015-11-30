@@ -44,4 +44,9 @@ class Keyword extends Model
         return $this->belongsTo(Keywordgroup::class);
     }
 
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
+
 }

@@ -24,19 +24,23 @@
 
 @section('content')
 
-    <h1>Page</h1>
+    <h1>Page <a href="http://{!! $page->domain->name.'/'.$page->slug !!}" class="btn btn-sm btn-primary pull-right" target="_blank">View Page</a></h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Page Title</th>
+                    <th>Slug</th>
+                    <th>Keyword</th>
                     <th>Domain</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $page->present()->pageTitle() }} </td>
-                    <td> {{ $page->domain->name }} </td>
+                    <td> {!! $page->present()->pageTitle() !!} </td>
+                    <td> {!! $page->slug !!} </td>
+                    <td> {!! $page->keyword->present()->adminLink() !!} </td>
+                    <td> {!! $page->domain->present()->adminLink() !!} </td>
                 </tr>
             </tbody>    
         </table>
