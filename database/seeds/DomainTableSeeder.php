@@ -12,7 +12,7 @@ class DomainTableSeeder extends Seeder
     public function run()
     {
         \App\Domain::create([
-            'name' => 'shoes.sitebuilder.app',
+            'name'              => 'shoes.'.getenv('APP_URL'),
             'domaingroup_id'    => \App\Domaingroup::first()->id,
             'keywordgroup_id'   => \App\Keywordgroup::first()->id
         ]);
