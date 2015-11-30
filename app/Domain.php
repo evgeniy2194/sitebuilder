@@ -59,4 +59,20 @@ class Domain extends Model
         return $this->hasMany(Page::class);
     }
 
+    public static function getDomainFromRequest()
+    {
+        $url_info       = parse_url(\Request::fullUrl());
+        $domain_name    = $url_info['host'];
+        $key            = $domain_name.'_check';
+
+        if(\Cache::has($key))
+            return \Cache::get($key);
+
+        $domain = self::whereName($domain_name)->first();
+
+        \Cache::put($key, $domain, 90);
+
+        return $domain;
+    }
+
 }
