@@ -4,9 +4,7 @@ namespace App;
 
 use App\Exceptions\DomainNotFoundException;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
 use Laracasts\Presenter\PresentableTrait;
-use Psy\Util\Str;
 
 /**
  * App\Page
@@ -58,6 +56,11 @@ class Page extends Model
         return $this->belongsTo(Keyword::class);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('content_delivered', 1);
+    }
+
     public function getBodyAttribute($value)
     {
         return gzinflate($value);
@@ -100,9 +103,10 @@ class Page extends Model
 
         if(isset($data['content']))
         {
-            $this->name = $this->keyword->name;
-            $this->slug = str_slug($this->name);
-            $this->body = $data['content'];
+            $this->name                 = $this->keyword->name;
+            $this->slug                 = str_slug($this->name);
+            $this->body                 = $data['content'];
+            $this->content_delivered    = 1;
             $this->save();
         }
     }
