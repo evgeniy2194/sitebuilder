@@ -23,6 +23,11 @@ class PagePresenter extends Presenter {
         return \Config::get('app.url').'/webhooks/content/page/'.$this->id;
     }
 
+    public function url()
+    {
+        return $this->slug;
+    }
+
     public function adminLink($anchor = false)
     {
         if( ! $anchor)
@@ -41,6 +46,41 @@ class PagePresenter extends Presenter {
         }
 
         return $this->entity->name;
+    }
+
+    public function pageBody()
+    {
+        $body = $this->entity->body;
+
+        // Reformat reddit link syntax to html links
+        $body = preg_replace_callback(
+            '~\[([^\]]+)\]\(([^)]+)\)~',
+            function ($m) {
+
+                $url    = $m[2];
+                $anchor = $m[1];
+
+                // If there's no domain to the link, drop it
+                if(substr($url, 0, 1) == '/')
+                    return '';
+
+                // Strip links to specific domains
+                $banned_domains = \Config::get('sitebuilder.remove_links_from_these_domains');
+                if(count($banned_domains) > 0)
+                {
+                    foreach($banned_domains as $banned_domain)
+                    {
+                        if(mb_stristr($url, $banned_domain))
+                            return '';
+                    }
+                }
+
+                return '<a href="'.$url.'" rel="nofollow">'.$anchor.'</a>';
+            },
+            $body
+        );
+
+        return $body;
     }
 
 }
