@@ -40,6 +40,10 @@
                                     <td><strong>Pages</strong></td>
                                     <td class="text-right">{!! number_format(\App\Page::count()) !!}</td>
                                 </tr>
+                                <tr>
+                                    <td><strong>Templates</strong></td>
+                                    <td class="text-right">{!! number_format(\App\Domaintemplate::count()) !!}</td>
+                                </tr>
             				</tbody>
             			</table>
             	  </div>

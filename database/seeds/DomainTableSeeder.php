@@ -14,7 +14,8 @@ class DomainTableSeeder extends Seeder
         \App\Domain::create([
             'name'              => 'shoes.'.getenv('APP_URL'),
             'domaingroup_id'    => \App\Domaingroup::first()->id,
-            'keywordgroup_id'   => \App\Keywordgroup::first()->id
+            'keywordgroup_id'   => \App\Keywordgroup::first()->id,
+            'domaintemplate_id' => \App\Domaintemplate::first()->id
         ]);
     }
 }

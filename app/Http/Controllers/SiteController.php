@@ -15,20 +15,20 @@ class SiteController extends Controller
     {
         $domain = Domain::getDomainFromRequest();
 
-        return view('site.index')->with('domain', $domain);
+        return view($domain->domaintemplate->templateIndexPath())->with('domain', $domain);
     }
 
     public function page($slug)
     {
-        $domain = Domain::getDomainFromRequest();
+        $domain     = Domain::getDomainFromRequest();
 
         // Cache this query
         // Todo: this may be a bad idea given no sanitation of this slug/string - look into that
-        $key = $domain->id.'_'.$slug.'_page';
-        $update = false;
+        $key        = $domain->id.'_'.$slug.'_page';
+        $update     = false;
         if(\Cache::has($key))
         {
-            $page =  \Cache::get($key);
+            $page   =  \Cache::get($key);
         }
         else
         {
@@ -41,7 +41,7 @@ class SiteController extends Controller
             if($update)
                 \Cache::put($key, $page, 90);
 
-            return view('site.page')->with('page', $page);
+            return view($domain->domaintemplate->templatePagePath())->with('page', $page);
         }
 
         return abort(404);

@@ -59,6 +59,11 @@ class Domain extends Model
         return $this->hasMany(Page::class);
     }
 
+    public function domaintemplate()
+    {
+        return $this->belongsTo(Domaintemplate::class);
+    }
+
     public static function getDomainFromRequest()
     {
         $url_info       = parse_url(\Request::fullUrl());

@@ -7,8 +7,11 @@
               <li class="@if(Request::is('keywordgroup*') || Request::is('keyword*')) active @endif">
                   <a href="/keywordgroup">Keyword Groups</a>
               </li>
-              <li class="@if(Request::is('domaingroup*') || Request::is('domain*')) active @endif">
+              <li class="@if(Request::is('domaingroup*') || Request::is('domain/*')) active @endif">
                   <a href="/domaingroup">Domain Groups</a>
+              </li>
+              <li class="@if(Request::is('domaintemplate*')) active @endif">
+                  <a href="/domaintemplate">Templates</a>
               </li>
           </ul>
 	  </div>

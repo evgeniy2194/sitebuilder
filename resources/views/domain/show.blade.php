@@ -29,6 +29,7 @@
                     <th>Name</th>
                     <th>Domain Group</th>
                     <th>Keyword Group</th>
+                    <th>Template</th>
                     <th class="text-center">Pages</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                     <td> <strong>{{ $domain->name }}</strong> </td>
                     <td> {!! $domain->domaingroup->present()->adminLink() !!} </td>
                     <td> {!! $domain->keywordgroup->present()->adminLink() !!}</td>
+                    <td> {!! $domain->domaintemplate->present()->adminLink() !!}</td>
                     <td class="text-center">{!! $domain->pages()->count() !!}</td>
                 </tr>
             </tbody>    

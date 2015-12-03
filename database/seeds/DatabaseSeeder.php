@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(DomaingroupTableSeeder::class);
         $this->call(KeywordgroupTableSeeder::class);
+        $this->call(DomaintemplateTableSeeder::class);
         $this->call(KeywordTableSeeder::class);
         $this->call(DomainTableSeeder::class);
 

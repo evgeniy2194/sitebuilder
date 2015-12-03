@@ -1,4 +1,4 @@
-@extends('site.layouts.default')
+@extends('site.templates.basic.layout')
 
 @section('title') {!! $page->present()->pageTitle() !!} - {!! $page->domain->name !!} @endsection
 

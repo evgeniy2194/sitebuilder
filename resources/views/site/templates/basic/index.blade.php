@@ -1,4 +1,4 @@
-@extends('site.layouts.default')
+@extends('site.templates.basic.layout')
 
 @section('title') Home - {!! $domain->name !!} @endsection
 
