@@ -15,7 +15,7 @@
 
 @section('content')
 
-    <h1>Templates <a href="{{ url('/domaintemplate/create') }}" class="btn btn-primary pull-right btn-sm">Add New Domaintemplate</a></h1>
+    <h1>Templates <a href="{{ url('/domaintemplate/create') }}" class="btn btn-primary pull-right btn-sm">Add New Template</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -32,7 +32,7 @@
                     <td class="text-center">{!! $item->domains()->count() !!}</td>
                     <td class="text-right">
                         <a href="{{ url('/domaintemplate/'.$item->id.'/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-warning btn-xs">Edit</button>
                         </a>
                         /
                         {!! Form::open(['method'=>'delete','action'=>['DomaintemplateController@destroy',$item->id], 'style' => 'display:inline']) !!}
