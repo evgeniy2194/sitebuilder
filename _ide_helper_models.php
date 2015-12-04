@@ -27,6 +27,9 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Domain whereKeywordgroupId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Domain whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Domain whereUpdatedAt($value)
+ * @property integer $domaintemplate_id
+ * @property-read Domaintemplate $domaintemplate
+ * @method static \Illuminate\Database\Query\Builder|\App\Domain whereDomaintemplateId($value)
  */
 	class Domain {}
 }
@@ -50,6 +53,23 @@ namespace App{
 
 namespace App{
 /**
+ * App\Domaintemplate
+ *
+ * @property integer $id
+ * @property string $name
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Domain[] $domains
+ * @method static \Illuminate\Database\Query\Builder|\App\Domaintemplate whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domaintemplate whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domaintemplate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Domaintemplate whereUpdatedAt($value)
+ */
+	class Domaintemplate {}
+}
+
+namespace App{
+/**
  * App\Keyword
  *
  * @property integer $id
@@ -63,6 +83,7 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Keyword whereKeywordgroupId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Keyword whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Keyword whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Page[] $pages
  */
 	class Keyword {}
 }
@@ -105,6 +126,13 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereDomainId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereUpdatedAt($value)
+ * @property string $slug
+ * @property boolean $content_requested
+ * @property boolean $content_delivered
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereContentRequested($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereContentDelivered($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page active()
  */
 	class Page {}
 }

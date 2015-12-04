@@ -48,6 +48,11 @@ class PagePresenter extends Presenter {
         return $this->entity->name;
     }
 
+    public function pageURL()
+    {
+        return $this->entity->slug;
+    }
+
     public function pageBody()
     {
         $body = $this->entity->body;
@@ -81,6 +86,17 @@ class PagePresenter extends Presenter {
         );
 
         return $body;
+    }
+
+    public function pageSummary($char_limit = 300)
+    {
+        $body = $this->pageBody();
+        return string($body)->tease($char_limit)." <a href='/".$this->pageURL()."'>See more</a>";
+    }
+
+    public function pagePostDate()
+    {
+        return $this->entity->created_at->toDateString();
     }
 
 }

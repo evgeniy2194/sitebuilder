@@ -15,7 +15,8 @@
         "intervention/imagecache": "^2.3",
         "league/flysystem-aws-s3-v3": "~1.0",
         "bestmomo/scafold": "dev-master",
-        "bugsnag/bugsnag-laravel": "1.*"
+        "bugsnag/bugsnag-laravel": "1.*",
+        "spatie/string": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

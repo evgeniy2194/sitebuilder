@@ -13,9 +13,12 @@ class SiteController extends Controller
 
     public function index()
     {
-        $domain = Domain::getDomainFromRequest();
+        $domain         = Domain::getDomainFromRequest();
+        $recent_posts   = $domain->pages()->active()->orderBy('id', 'DESC')->paginate(8);
 
-        return view($domain->domaintemplate->templateIndexPath())->with('domain', $domain);
+        return view($domain->domaintemplate->templateIndexPath())
+            ->with('domain',        $domain)
+            ->with('recent_posts',  $recent_posts);
     }
 
     public function page($slug)
