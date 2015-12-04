@@ -23,7 +23,7 @@
 
     <h1>Domain
         <a href="{{ url('http://'.$domain->name) }}" target="_blank" class="btn btn-primary pull-right btn-sm">View Site</a>
-        <a href="{!! $domain->present()->editURL() !!}"><button type="submit" class="btn btn-warning btn-sm pull-right">Update</button></a>
+        <a href="{!! $domain->present()->editURL() !!}"><button type="submit" class="btn btn-warning btn-sm pull-right">Edit</button></a>
     </h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
