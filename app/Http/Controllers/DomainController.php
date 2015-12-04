@@ -33,9 +33,13 @@ class DomainController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Request $request)
 	{
-		return view('domain.create');
+        $domaingroup_id = $request->get('domaingroup_id');
+        $domaingroup    = Domaingroup::find($domaingroup_id);
+
+		return view('domain.create')
+            ->with('domaingroup', $domaingroup);
 	}
 
 	/**
@@ -78,10 +82,12 @@ class DomainController extends Controller
 
         $domaingroup_id            = $request->get('domaingroup_id');
         $keywordgroup_id           = $request->get('keywordgroup_id');
+        $domaintemplate_id         = $request->get('domaintemplate_id');
         $domaingroup               = Domaingroup::find($domaingroup_id);
 
         $data['domaingroup_id']    = $domaingroup_id;
         $data['keywordgroup_id']   = $keywordgroup_id;
+        $data['domaintemplate_id'] = $domaintemplate_id;
         foreach($domains as $domain)
         {
             $data['name'] = $domain;
@@ -89,12 +95,17 @@ class DomainController extends Controller
             $validator = Validator::make($data, [
                 'domaingroup_id'    => 'integer|required',
                 'keywordgroup_id'   => 'integer|required',
-                'name'              => 'required|string|max:255|unique:domains,name,NULL,id,domaingroup_id,'.$domaingroup_id
+                'domaintemplate_id' => 'integer|required|exists:domaintemplates,id',
+                'name'              => 'required|domain_name|string|max:255|unique:domains,name,NULL,id,domaingroup_id,'.$domaingroup_id
             ]);
 
             if($validator->passes())
             {
                 $domaingroup->domains()->create($data);
+            }
+            else
+            {
+                return back()->withInput()->withErrors($validator);
             }
         }
 
@@ -136,7 +147,7 @@ class DomainController extends Controller
 	public function update($id, Request $request)
 	{
 		$this->validate($request, [
-            'name'              => 'required',
+            'name'              => 'required|domain_name',
             'domaintemplate_id' => 'required|exists:domaintemplates,id',
             'keywordgroup_id'   => 'required|exists:keywordgroups,id'
         ]);

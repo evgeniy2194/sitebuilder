@@ -27,22 +27,10 @@ use Laracasts\Presenter\PresentableTrait;
 class Domain extends Model
 {
     use PresentableTrait;
-    protected $presenter = \Acme\Presenters\DomainPresenter::class;
+    protected $presenter    = \Acme\Presenters\DomainPresenter::class;
 
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'domains';
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'domaingroup_id', 'keywordgroup_id'];
+    protected $table        = 'domains';
+    protected $guarded      = ['id', 'created_at'];
 
     public function domaingroup()
     {
