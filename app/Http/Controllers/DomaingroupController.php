@@ -20,6 +20,7 @@ class DomaingroupController extends Controller
 	public function index()
 	{
 		$domaingroups = Domaingroup::latest()->get();
+
 		return view('domaingroup.index', compact('domaingroups'));
 	}
 
@@ -40,8 +41,12 @@ class DomaingroupController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, ['name' => 'required|unique:domaingroups|string']);
+		$this->validate($request, [
+            'name' => 'required|unique:domaingroups|string'
+        ]);
+
 		Domaingroup::create($request->all());
+
 		return redirect('domaingroup');
 	}
 
@@ -54,6 +59,7 @@ class DomaingroupController extends Controller
 	public function show($id)
 	{
 		$domaingroup = Domaingroup::findOrFail($id);
+
 		return view('domaingroup.show', compact('domaingroup'));
 	}
 
@@ -66,6 +72,7 @@ class DomaingroupController extends Controller
 	public function edit($id)
 	{
 		$domaingroup = Domaingroup::findOrFail($id);
+
 		return view('domaingroup.edit', compact('domaingroup'));
 	}
 
@@ -77,9 +84,13 @@ class DomaingroupController extends Controller
 	 */
 	public function update($id, Request $request)
 	{
-		$this->validate($request, ['name' => 'required']);
+		$this->validate($request, [
+            'name' => 'required'
+        ]);
+
 		$domaingroup = Domaingroup::findOrFail($id);
 		$domaingroup->update($request->all());
+
 		return redirect('domaingroup');
 	}
 
@@ -92,6 +103,7 @@ class DomaingroupController extends Controller
 	public function destroy($id)
 	{
 		Domaingroup::destroy($id);
+
 		return redirect('domaingroup');
 	}
 

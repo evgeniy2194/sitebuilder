@@ -27,16 +27,26 @@
     {!! Form::model($domain, ['method' => 'PATCH', 'action' => ['DomainController@update', $domain->id], 'class' => 'form-horizontal']) !!}
 
     <div class="form-group">
-                        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div><div class="form-group">
-                        {!! Form::label('domaingroup_id', 'Domaingroup Id: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::number('domaingroup_id', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div>
+        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            <p class="help-block">Don't change this unless you know what you're doing.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        {!! Form::label('domaintemplate_id', 'Template: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::select('domaintemplate_id', \App\Domaintemplate::lists('name','id'), $domain->domaintemplate_id, ['class' => 'form-control']) !!}
+            <p class="help-block">Changing this will change the default template for new domains added, but has no effect on existing domains.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        {!! Form::label('keywordgroup_id', 'Keyword Group: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::select('keywordgroup_id', \App\Keywordgroup::lists('name','id'), $domain->keywordgroup_id, ['class' => 'form-control']) !!}
+            <p class="help-block">Changing this will change the default keyword group for new domains added, but has no effect on existing domains.</p>
+        </div>
+    </div>
     
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">

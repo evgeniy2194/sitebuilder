@@ -24,6 +24,7 @@ class DomainController extends Controller
 	public function index()
 	{
 		$domains = Domain::latest()->get();
+
 		return view('domain.index', compact('domains'));
 	}
 
@@ -109,6 +110,7 @@ class DomainController extends Controller
 	public function show($id)
 	{
 		$domain = Domain::findOrFail($id);
+
 		return view('domain.show', compact('domain'));
 	}
 
@@ -121,6 +123,7 @@ class DomainController extends Controller
 	public function edit($id)
 	{
 		$domain = Domain::findOrFail($id);
+
 		return view('domain.edit', compact('domain'));
 	}
 
@@ -132,10 +135,18 @@ class DomainController extends Controller
 	 */
 	public function update($id, Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, [
+            'name'              => 'required',
+            'domaintemplate_id' => 'required|exists:domaintemplates,id',
+            'keywordgroup_id'   => 'required|exists:keywordgroups,id'
+        ]);
+
 		$domain = Domain::findOrFail($id);
 		$domain->update($request->all());
-		return redirect('domain');
+
+        Flash::success('Domain updated.');
+
+		return redirect('domain/'.$domain->id);
 	}
 
 	/**
@@ -147,6 +158,7 @@ class DomainController extends Controller
 	public function destroy($id)
 	{
 		Domain::destroy($id);
+
 		return redirect('domain');
 	}
 
