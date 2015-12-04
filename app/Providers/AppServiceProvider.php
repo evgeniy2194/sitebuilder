@@ -14,6 +14,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
+         * Custom Validation Rules
+         */
+
+        \Validator::extend('domain_name', function($attribute, $value, $parameters, $validator)
+        {
+            return filter_var('http://'.$value, FILTER_VALIDATE_URL);
+        });
+
+        /*
+         * Model Events
+         */
+
         Page::created(function(Page $page)
         {
             // Send request to content API
