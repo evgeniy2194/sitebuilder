@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Keywordgroup;
 use App\Page;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +33,13 @@ class AppServiceProvider extends ServiceProvider
             // Send request to content API
             $page->requestContent();
         });
+
+        Keywordgroup::creating(function(Keywordgroup $keywordgroup)
+        {
+            // Set slug
+            $keywordgroup->slug = str_slug($keywordgroup->name);
+        });
+
     }
 
     /**
