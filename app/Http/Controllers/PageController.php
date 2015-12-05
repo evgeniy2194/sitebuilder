@@ -48,7 +48,7 @@ class PageController extends Controller
 
 		$this->validate($request, [
             'domain_id' => 'required|integer|exists:domains,id',
-            'count'     => 'required|integer|max::'.$max_pages
+            'count'     => 'required|integer|max:'.$max_pages
         ]);
 
         $count          = $request->get('count');
