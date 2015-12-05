@@ -32,19 +32,8 @@ class Page extends Model
     use PresentableTrait;
     protected $presenter = \Acme\Presenters\PagePresenter::class;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'pages';
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'body', 'domain_id', 'keyword_id'];
+    protected $guarded = ['id', 'created_at'];
 
     public function domain()
     {
@@ -54,6 +43,11 @@ class Page extends Model
     public function keyword()
     {
         return $this->belongsTo(Keyword::class);
+    }
+
+    public function keywordgroup()
+    {
+        return $this->belongsTo(Keywordgroup::class);
     }
 
     public function scopeActive($query)
@@ -141,8 +135,9 @@ class Page extends Model
             foreach($keywords as $keyword)
             {
                 $page = self::create([
-                    'domain_id' => $domain_id,
-                    'keyword_id'=> $keyword->id
+                    'domain_id'         => $domain_id,
+                    'keyword_id'        => $keyword->id,
+                    'keywordgroup_id'   => $keyword->keywordgroup->id
                 ]);
                 if($page)
                     $created++;

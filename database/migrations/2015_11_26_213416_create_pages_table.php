@@ -23,6 +23,11 @@ class CreatePagesTable extends Migration
                 ->references('id')
                 ->on('keywords')
                 ->onDelete('cascade');
+            $table->integer('keywordgroup_id')->unsigned();
+            $table->foreign('keywordgroup_id')
+                ->references('id')
+                ->on('keywordgroups')
+                ->onDelete('cascade');
             $table->bigInteger('domain_id')->unsigned();
             $table->foreign('domain_id')
                 ->references('id')
