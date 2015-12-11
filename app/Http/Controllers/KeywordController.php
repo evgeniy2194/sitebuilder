@@ -144,4 +144,107 @@ class KeywordController extends Controller
 		return redirect('keywordgroup/'.$keywordgroup_id);
 	}
 
+    public function getGenerate()
+    {
+        return view('keyword.generate');
+    }
+
+    public function postGenerate(Request $request)
+    {
+        $before = $request->get('before');
+        $root   = $request->get('root');
+        $after  = $request->get('after');
+
+        if(mb_stristr($before, "\r\n"))
+            $before = explode("\r\n", $before);
+        else
+        {
+            if(mb_strlen($before))
+                $before = [$before];
+            else
+                $before = null;
+        }
+
+        if(mb_stristr($root, "\r\n"))
+            $root = explode("\r\n", $root);
+        else
+        {
+            if(mb_strlen($root))
+                $root = [$root];
+            else
+                $root = null;
+        }
+
+        if(mb_stristr($after, "\r\n"))
+            $after = explode("\r\n", $after);
+        else
+        {
+            if(mb_strlen($after))
+                $after = [$after];
+            else
+                $after = null;
+        }
+
+        $generated = [];
+
+        // Add root words first
+        if($root !== null && count($root) > 0)
+        {
+            foreach($root as $kw)
+            {
+                $generated[] = $kw;
+            }
+        }
+
+        // Add root word + prefix
+        if($root !== null && count($root) > 0 && $before !== null && count($before) > 0)
+        {
+            foreach($root as $kw)
+            {
+                foreach($before as $prefix)
+                {
+                    $generated[] = $prefix.' '.$kw;
+                }
+            }
+        }
+
+        // Add root word + suffix
+        if($root !== null && count($root) > 0 && $after !== null && count($after) > 0)
+        {
+            foreach($root as $kw)
+            {
+                foreach($after as $suffix)
+                {
+                    $generated[] = $kw.' '.$suffix;
+                }
+            }
+        }
+
+        // Add all three
+        if($root !== null && count($root) && $before !== null && count($before) > 0 && $after !== null && count($after) > 0)
+        {
+            foreach($root as $kw)
+            {
+                foreach($before as $prefix)
+                {
+                    foreach($after as $suffix)
+                    {
+                        $generated[] = $prefix.' '.$kw.' '.$suffix;
+                    }
+                }
+            }
+        }
+
+        // Remove duplicates
+        $final = [];
+        foreach($generated as $kw)
+        {
+            if( !in_array($kw, $final))
+                $final[] = $kw;
+        }
+        $generated = $final;
+
+        return view('keyword.generate', compact('before', 'root', 'after', 'generated'));
+    }
+
 }

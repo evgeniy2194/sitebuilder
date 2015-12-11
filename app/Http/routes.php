@@ -21,6 +21,8 @@ else
 
         Route::resource('keywordgroup',             'KeywordgroupController');
         Route::resource('keyword',                  'KeywordController');
+        Route::get('generate-keywords',             'KeywordController@getGenerate');
+        Route::post('generate-keywords',            'KeywordController@postGenerate');
         Route::resource('domaingroup',              'DomaingroupController');
         Route::resource('domaintemplate',           'DomaintemplateController');
         Route::resource('domain',                   'DomainController');

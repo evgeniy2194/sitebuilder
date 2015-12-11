@@ -16,3 +16,16 @@
           </ul>
 	  </div>
 </div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tools</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a href="/generate-keywords">Keyword Generator</a>
+            </li>
+        </ul>
+    </div>
+</div>
