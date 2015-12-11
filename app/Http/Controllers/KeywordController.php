@@ -73,7 +73,7 @@ class KeywordController extends Controller
         $data['keywordgroup_id']    = $keywordgroup_id;
         foreach($keywords as $kw)
         {
-            $data['name'] = $kw;
+            $data['name'] = trim($kw);
             // This name validation rule will confirm that a keyword->name is unique to the supplied keywordgroup
 
             $validator = Validator::make($data, [
