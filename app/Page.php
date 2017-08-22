@@ -57,6 +57,9 @@ class Page extends Model
 
     public function getBodyAttribute($value)
     {
+        if(is_null($value))
+            return '';
+        
         return gzinflate($value);
     }
 
