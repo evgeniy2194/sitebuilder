@@ -11,8 +11,7 @@
 @endsection
 
 @section('content')
-    <h3>Recent posts</h3>
-
+    <hr>
     @foreach($recent_posts as $page)
         @include('site.templates.basic.partials.page-summary')
     @endforeach

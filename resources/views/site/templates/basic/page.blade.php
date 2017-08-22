@@ -7,7 +7,7 @@
 @endsection
 
 @section('sidebar')
-    @include('site.templates.basic.partials.sidebar-menu')
+    @include('site.templates.basic.partials.sidebar-menu', ['page_view' => true])
 @endsection
 
 @section('content')

@@ -99,4 +99,9 @@ class PagePresenter extends Presenter {
         return $this->entity->created_at->toDateString();
     }
 
+    public function pagePostFormattedDate()
+    {
+        return $this->entity->created_at->toFormattedDateString();
+    }
+
 }

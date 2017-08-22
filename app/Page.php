@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Exceptions\DomainNotFoundException;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
@@ -59,7 +60,7 @@ class Page extends Model
     {
         if(is_null($value))
             return '';
-        
+
         return gzinflate($value);
     }
 
@@ -104,6 +105,7 @@ class Page extends Model
             $this->slug                 = str_slug($this->name);
             $this->body                 = $data['content'];
             $this->content_delivered    = 1;
+            $this->content_delivered_at = Carbon::now();
             $this->save();
         }
     }
