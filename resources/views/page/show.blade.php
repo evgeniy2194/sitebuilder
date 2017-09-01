@@ -53,7 +53,7 @@
             			<h3 class="panel-title">Content</h3>
             	  </div>
             	  <div class="panel-body">
-            			{!! $page->body !!}
+            			{!! $page->present()->pageBody() !!}
             	  </div>
             </div>
         </div>
