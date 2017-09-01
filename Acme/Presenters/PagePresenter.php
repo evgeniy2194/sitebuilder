@@ -41,12 +41,13 @@ class PagePresenter extends Presenter {
 
     public function pageTitle()
     {
+        $page_title = $this->entity->keyword->name;
         if($this->entity->name == '' || $this->entity->name == null)
         {
-            return $this->entity->keyword->name.' (Pending)';
+            $page_title = $page_title.' <span class="pull-right">(Pending)</span>';
         }
 
-        return $this->entity->name;
+        return $page_title;
     }
 
     public function pageURL()
