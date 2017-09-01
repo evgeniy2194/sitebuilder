@@ -37,7 +37,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td> {!! $page->present()->pageTitle() !!} </td>
+                    <td> {{ $page->present()->pageTitle() }} </td>
                     <td> {!! $page->slug !!} </td>
                     <td> {!! $page->keyword->present()->adminLink() !!} </td>
                     <td> {!! $page->domain->present()->adminLink() !!} </td>
