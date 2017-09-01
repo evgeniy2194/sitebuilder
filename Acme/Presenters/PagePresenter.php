@@ -3,6 +3,7 @@
 namespace Acme\Presenters;
 
 use Laracasts\Presenter\Presenter;
+use League\CommonMark\CommonMarkConverter;
 
 class PagePresenter extends Presenter {
 
@@ -75,6 +76,7 @@ class PagePresenter extends Presenter {
                 {
                     foreach($banned_domains as $banned_domain)
                     {
+                        // This is a link from a banned domain, return nothing
                         if(mb_stristr($url, $banned_domain))
                             return '';
                     }
@@ -85,12 +87,25 @@ class PagePresenter extends Presenter {
             $body
         );
 
+        // Convert markdown
+        $converter = new CommonMarkConverter([
+            'allow_unsafe_links'    => true,
+        ]);
+        $body = $converter->convertToHtml($body);
+
         return $body;
     }
 
     public function pageSummary($char_limit = 300)
     {
         $body = $this->pageBody();
+
+        // Convert markdown
+        $converter = new CommonMarkConverter([
+            'allow_unsafe_links'    => true,
+        ]);
+        $body = $converter->convertToHtml($body);
+
         return string($body)->tease($char_limit)." <a href='/".$this->pageURL()."'>See more</a>";
     }
 

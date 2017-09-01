@@ -102,6 +102,8 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Keywordgroup whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Keywordgroup whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Keywordgroup whereUpdatedAt($value)
+ * @property string $slug
+ * @method static \Illuminate\Database\Query\Builder|\App\Keywordgroup whereSlug($value)
  */
 	class Keywordgroup {}
 }
@@ -127,11 +129,16 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereUpdatedAt($value)
  * @property string $slug
+ * @property integer $keywordgroup_id
  * @property boolean $content_requested
  * @property boolean $content_delivered
+ * @property string $content_delivered_at
+ * @property-read Keywordgroup $keywordgroup
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereKeywordgroupId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereContentRequested($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page whereContentDelivered($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Page whereContentDeliveredAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Page active()
  */
 	class Page {}
