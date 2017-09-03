@@ -34,14 +34,14 @@
     <div class="form-group">
         {!! Form::label('keywordgroup_id', 'Keyword Group: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('keywordgroup_id',\App\Keywordgroup::lists('name', 'id'), $domaingroup->keywordgroup_id, ['class' => 'form-control']) !!}
+            {!! Form::select('keywordgroup_id',\App\Keywordgroup::pluck('name', 'id'), $domaingroup->keywordgroup_id, ['class' => 'form-control']) !!}
         </div>
     </div>
 
     <div class="form-group">
         {!! Form::label('domaintemplate_id', 'Template: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('domaintemplate_id',\App\Domaintemplate::lists('name', 'id'), null, ['class' => 'form-control']) !!}
+            {!! Form::select('domaintemplate_id',\App\Domaintemplate::pluck('name', 'id'), null, ['class' => 'form-control']) !!}
         </div>
     </div>
 

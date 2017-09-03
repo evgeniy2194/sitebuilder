@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
 
         $this->call(UserTableSeeder::class);
         $this->call(DomaingroupTableSeeder::class);
@@ -21,6 +20,5 @@ class DatabaseSeeder extends Seeder
         $this->call(KeywordTableSeeder::class);
         $this->call(DomainTableSeeder::class);
 
-        Model::reguard();
     }
 }

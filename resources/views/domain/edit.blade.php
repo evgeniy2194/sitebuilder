@@ -36,14 +36,14 @@
     <div class="form-group">
         {!! Form::label('domaintemplate_id', 'Template: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('domaintemplate_id', \App\Domaintemplate::lists('name','id'), $domain->domaintemplate_id, ['class' => 'form-control']) !!}
+            {!! Form::select('domaintemplate_id', \App\Domaintemplate::pluck('name','id'), $domain->domaintemplate_id, ['class' => 'form-control']) !!}
             <p class="help-block">Changing this will change the default template for new domains added, but has no effect on existing domains.</p>
         </div>
     </div>
     <div class="form-group">
         {!! Form::label('keywordgroup_id', 'Keyword Group: ', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            {!! Form::select('keywordgroup_id', \App\Keywordgroup::lists('name','id'), $domain->keywordgroup_id, ['class' => 'form-control']) !!}
+            {!! Form::select('keywordgroup_id', \App\Keywordgroup::pluck('name','id'), $domain->keywordgroup_id, ['class' => 'form-control']) !!}
             <p class="help-block">Changing this will change the default keyword group for new domains added, but has no effect on existing domains.</p>
         </div>
     </div>

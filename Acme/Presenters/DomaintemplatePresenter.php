@@ -25,7 +25,7 @@ class DomaintemplatePresenter extends Presenter {
             $anchor = $this->entity->name;
         }
 
-        return link_to($this->adminURL(), $anchor);
+        return "<a href='".$this->adminURL()."'>".$anchor."</a>";
     }
 
 }

@@ -61,7 +61,7 @@
             <tbody>
             @foreach($domain->pages as $item)
                 <tr class="@if($item->content_delivered === 0) warning @endif">
-                    <td>{!! link_to($item->present()->adminURL(), $item->present()->pageTitle()) !!}</td>
+                    <td><a href="{!! $item->present()->adminURL() !!}">{!! $item->present()->pageTitle() !!}</a></td>
                     <td>{!! $item->keyword->present()->adminLink() !!} / {!! $item->keywordgroup->present()->adminLink() !!}</td>
                     <td class="text-right">
                         <a href="http://{!! $domain->name.'/'.$item->present()->url() !!}" class="btn btn-primary btn-xs" target="_blank">

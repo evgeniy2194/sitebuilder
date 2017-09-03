@@ -121,7 +121,7 @@ class Page extends Model
         $keyword_ids = [];
         if($domain->pages()->count())
         {
-            $keyword_ids = $domain->pages()->lists('keyword_id');
+            $keyword_ids = $domain->pages()->pluck('keyword_id');
         }
 
         // Acquire keywords

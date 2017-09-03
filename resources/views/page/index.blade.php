@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Pages</h1>
-            <p class="alert alert-warning">This view is depreciated. Please view pages through their respective {!! link_to('/domaingroup', 'Domain Groups') !!}</p>
+            <p class="alert alert-warning">This view is depreciated. Please view pages through their respective <a
+                        href="/domaingroup">Domain Groups</a></p>
         </div>
     </div>
 
