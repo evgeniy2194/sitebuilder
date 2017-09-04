@@ -18,7 +18,9 @@
         "bugsnag/bugsnag-laravel": "1.*",
         "spatie/string": "^2.1",
         "league/commonmark": "^0.15.6",
-        "laravelcollective/html": "^5.2.0"
+        "laravelcollective/html": "^5.2.0",
+        "neitanod/forceutf8": "~2.0",
+        "fabpot/goutte": "^3.2"
     },
     "require-dev": {
         "symfony/dom-crawler": "~3.0",
