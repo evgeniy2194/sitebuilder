@@ -32,11 +32,21 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Subreddit Filters</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td> {{ $keywordgroup->name }} </td>
+                    <td>{{ $keywordgroup->name }} </td>
+                    <td>
+                        @if($keywordgroup->subreddits_filter !== null)
+                            @foreach(explode(',', $keywordgroup->subreddits_filter) as $subreddit)
+                                <a href="https://reddit.com/r/{!! $subreddit !!}" target="_blank">r/{!! $subreddit !!}</a><br>
+                            @endforeach
+                        @else
+                            N/A
+                        @endif
+                    </td>
                 </tr>
             </tbody>    
         </table>

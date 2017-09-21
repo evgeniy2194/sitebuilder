@@ -37,7 +37,7 @@ class Keywordgroup extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name','slug','subreddits_filter'];
 
     public function keywords()
     {

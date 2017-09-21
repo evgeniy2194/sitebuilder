@@ -75,10 +75,16 @@ class Page extends Model
     // Send request to the ghetto content API
     public function requestContent()
     {
-        $base_url   = getenv('CONTENT_API_BASE_URL');
-        $endpoint   = 'search';
-        $parameters = '?query='.urlencode($this->keyword->name).'&webhook_url='.urlencode($this->present()->webhookURL());
-        $request_url= $base_url.$endpoint.$parameters;
+        $base_url       = getenv('CONTENT_API_BASE_URL');
+        $endpoint       = 'search';
+        $parameters     = '?query='.urlencode($this->keyword->name);
+        $parameters     .= '&webhook_url='.urlencode($this->present()->webhookURL());
+
+        // If there are subreddit filters on the keyword group let's include those in the request
+        if($this->keyword->keywordgroup->subreddits_filter !== null)
+            $parameters .= '&subreddit_filter='.urlencode($this->keyword->keywordgroup->subreddits_filter);
+
+        $request_url    = $base_url.$endpoint.$parameters;
 
         $client     = new \GuzzleHttp\Client();
         $client->get($request_url);

@@ -32,6 +32,14 @@
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
     </div>
+
+    <div class="form-group">
+        {!! Form::label('subreddits_filter', 'Subreddits: ', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            {!! Form::text('subreddits_filter', null, ['class' => 'form-control']) !!}
+            <p class="help-block">Comma separated (Example: worldnews,politics,videos)</p>
+        </div>
+    </div>
     
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
