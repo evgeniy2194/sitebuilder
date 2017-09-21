@@ -42,4 +42,21 @@ class Domaingroup extends Model
         return $this->hasMany(Domain::class);
     }
 
+    public function pageCounts()
+    {
+        $total      = 0;
+        $pending    = 0;
+        foreach($this->domains as $domain)
+        {
+            $total      = $total + $domain->pages->count();
+            $pending    = $pending + $domain->pages()->where('content_delivered', 0)->count();
+        }
+
+        $return = [
+            'total'     => $total,
+            'pending'   => $pending
+        ];
+        return $return;
+    }
+
 }

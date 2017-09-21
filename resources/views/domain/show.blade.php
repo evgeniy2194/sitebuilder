@@ -48,7 +48,7 @@
         </table>
     </div>
 
-    <h3>Pages <a href="{{ url('/page/create'.'?domain_id='.$domain->id) }}" class="btn btn-primary pull-right btn-sm">Add Pages</a></h3>
+    <h3>Pages @if($domain->pages()->where('content_delivered', 0)->count()) <small>({!! $domain->pages()->where('content_delivered', 0)->count() !!} Pending Pages)</small> @endif <a href="{{ url('/page/create'.'?domain_id='.$domain->id) }}" class="btn btn-primary pull-right btn-sm">Add Pages</a></h3>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

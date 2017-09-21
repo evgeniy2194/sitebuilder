@@ -22,6 +22,8 @@
                 <tr>
                     <th>Name</th>
                     <th class="text-center">Keywords</th>
+                    <th class="text-center">Domains</th>
+                    <th class="text-center">Pages <br> <small>Pending/Total</small></th>
                     <th class="text-right">Actions</th>
                 </tr>
             </thead>                
@@ -30,6 +32,8 @@
                 <tr>
                     <td>{!! $item->present()->adminLink() !!}</td>
                     <td class="text-center">{!! $item->keywords()->count() !!}</td>
+                    <td class="text-center">{!! App\Domain::where('keywordgroup_id', $item->id)->count() !!}</td>
+                    <td class="text-center">{!! number_format($item->pageCounts()['pending']) !!}/{!! number_format($item->pageCounts()['total']) !!}</td>
                     <td class="text-right">
                         <a href="{!! $item->present()->editURL() !!}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a>
                         /
