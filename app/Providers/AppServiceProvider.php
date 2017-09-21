@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\SendRedditContentRequest;
 use App\Keywordgroup;
 use App\Page;
 use Illuminate\Support\ServiceProvider;
@@ -18,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
         /*
          * Custom Validation Rules
          */
-
         \Validator::extend('domain_name', function($attribute, $value, $parameters, $validator)
         {
             return filter_var('http://'.$value, FILTER_VALIDATE_URL);
@@ -27,11 +27,11 @@ class AppServiceProvider extends ServiceProvider
         /*
          * Model Events
          */
-
         Page::created(function(Page $page)
         {
             // Send request to content API
-            $page->requestContent();
+            $job = (new SendRedditContentRequest($page))->onQueue('content-requests');
+            dispatch($job);
         });
 
         Keywordgroup::creating(function(Keywordgroup $keywordgroup)

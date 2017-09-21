@@ -102,8 +102,6 @@ class Page extends Model
         ]);
         */
 
-        \Log::debug($data);
-
         if(isset($data['content']))
         {
             $this->name                 = $this->keyword->name;
