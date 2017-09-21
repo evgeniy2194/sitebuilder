@@ -31,10 +31,13 @@ class Page extends Model
 {
 
     use PresentableTrait;
-    protected $presenter = \Acme\Presenters\PagePresenter::class;
+    protected $presenter    = \Acme\Presenters\PagePresenter::class;
 
-    protected $table = 'pages';
-    protected $guarded = ['id', 'created_at'];
+    protected $table        = 'pages';
+    protected $guarded      = ['id', 'created_at'];
+    protected $casts        = [
+        'meta' => 'array'
+    ];
 
     public function domain()
     {
@@ -99,11 +102,22 @@ class Page extends Model
         ]);
         */
 
+        \Log::debug($data);
+
         if(isset($data['content']))
         {
             $this->name                 = $this->keyword->name;
             $this->slug                 = str_slug($this->name);
             $this->body                 = $data['content'];
+
+            // Setup meta fields
+            $meta                       = [];
+            if(isset($data['images']))
+                $meta['images']         = $data['images'];
+            if(isset($data['videos']))
+                $meta['videos']         = $data['videos'];
+            $this->meta                 = $meta;
+
             $this->content_delivered    = 1;
             $this->content_delivered_at = Carbon::now();
             $this->save();
